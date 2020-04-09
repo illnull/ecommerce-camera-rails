@@ -3,7 +3,7 @@
 class CategoriesController < ApplicationController
   respond_to :json
 
-  def index
+  def categories
     @categories = Category.all
     respond_with(@categories)
   end

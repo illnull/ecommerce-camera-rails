@@ -4,10 +4,10 @@ module CurrentUserConcern
   extend ActiveSupport::Concern
 
   included do
-    before_action :set_current_user
+    before_action :set_current_customer
   end
 
-  def set_current_user
+  def set_current_customer
     if session[:customer_id]
       @current_customer = Customer.find(session[:customer_id])
     end

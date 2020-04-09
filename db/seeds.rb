@@ -2,6 +2,7 @@
 
 require 'csv'
 
+AdminUser.destroy_all
 Product.destroy_all
 Category.destroy_all
 
@@ -70,6 +71,6 @@ end
 puts "Created #{Category.count} categories"
 puts "Created #{Product.count} products"
 
-# if Rails.env.development?
-#   AdminUser.create!(email: 'a@a.a', password: '123123', password_confirmation: '123123')
-# end
+if Rails.env.development?
+  AdminUser.create!(email: 'admin@example.com', password: '123123', password_confirmation: '123123')
+end
