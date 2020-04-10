@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'contacts/view'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
     get '/products/:id', to: 'products#view'
     post '/customers/new', to: 'customers#create'
     get '/provinces/view', to: 'provinces#view'
+    get '/contacts/view', to: 'contact#view'
+    get '/abouts/view', to: 'abouts#view'
     # resources :customer, only: %i[create show index]
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'

@@ -5,7 +5,10 @@ require 'csv'
 AdminUser.destroy_all
 Product.destroy_all
 Category.destroy_all
+Customer.destroy_all
 Province.destroy_all
+Contact.destroy_all
+About.destroy_all
 
 provinces = { 'name' => 'AB', 'pst' => 0,       'gst' => 0.05,    'hst' => 0 },
             { 'name' => 'BC', 'pst' => 0.07,    'gst' => 0.05,    'hst' => 0 },
@@ -91,6 +94,14 @@ provinces.each do |data|
     hst: data['hst']
   )
 end
+
+About.create(
+  content: 'Established 2012 Langly bags were inspired by the lives of freelance photographers and nomadic professionals looking for something to protect their gear with style and ease. After years of searching for the perfect camera bag with no avail, photographer Evan Lane decided to take things into his own hands and Langly Bags were born. Today Langly bags have been worn on all seven continents by amateurs and professionals alike.'
+)
+
+Contact.create(
+  content: 'For immediate assistance, call toll free (204) 222-2222. Or email Virtual.Front.Desk@datskay.Team and we will reply as soon as possible.'
+)
 
 puts "Created #{Category.count} categories"
 puts "Created #{Product.count} products"
