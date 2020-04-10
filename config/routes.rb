@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get '/products/new', to: 'products#new'
     get '/products/:id', to: 'products#view'
     post '/customers/new', to: 'customers#create'
+    get '/provinces/view', to: 'provinces#view'
     # resources :customer, only: %i[create show index]
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'

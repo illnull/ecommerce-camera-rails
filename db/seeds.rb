@@ -5,6 +5,21 @@ require 'csv'
 AdminUser.destroy_all
 Product.destroy_all
 Category.destroy_all
+Province.destroy_all
+
+provinces = { 'name' => 'AB', 'pst' => 0,       'gst' => 0.05,    'hst' => 0 },
+            { 'name' => 'BC', 'pst' => 0.07,    'gst' => 0.05,    'hst' => 0 },
+            { 'name' => 'MB', 'pst' => 0.07,    'gst' => 0.05,    'hst' => 0 },
+            { 'name' => 'NB', 'pst' => 0,       'gst' => 0,       'hst' => 0.15 },
+            { 'name' => 'NL', 'pst' => 0,       'gst' => 0,       'hst' => 0.15 },
+            { 'name' => 'NT', 'pst' => 0,       'gst' => 0.05,    'hst' => 0 },
+            { 'name' => 'NS', 'pst' => 0,       'gst' => 0,       'hst' => 0.15 },
+            { 'name' => 'NU', 'pst' => 0,       'gst' => 0.05,    'hst' => 0 },
+            { 'name' => 'ON', 'pst' => 0,       'gst' => 0,       'hst' => 0.13 },
+            { 'name' => 'PE', 'pst' => 0,       'gst' => 0,       'hst' => 0.15 },
+            { 'name' => 'QC', 'pst' => 0.09975, 'gst' => 0.05,    'hst' => 0 },
+            { 'name' => 'SK', 'pst' => 0.06,    'gst' => 0.05,    'hst' => 0 },
+            { 'name' => 'YT', 'pst' => 0,       'gst' => 0.05,    'hst' => 0 }
 
 category_file = 'vendor/data/category.csv'
 backpack_file = 'vendor/data/backpack.csv'
@@ -68,8 +83,18 @@ merch_json.each do |data|
   )
 end
 
+provinces.each do |data|
+  Province.create(
+    name: data['name'],
+    pst: data['pst'],
+    gst: data['gst'],
+    hst: data['hst']
+  )
+end
+
 puts "Created #{Category.count} categories"
 puts "Created #{Product.count} products"
+puts "Created #{Province.count} provinces"
 
 if Rails.env.development?
   AdminUser.create!(email: 'admin@example.com', password: '123123', password_confirmation: '123123')
