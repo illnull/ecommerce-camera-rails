@@ -44,46 +44,54 @@ end
 
 backpack = Category.where(categoryDescription: 'backpack').take
 backpack_json.each do |data|
-  backpack.products.create(
+  created = backpack.products.create(
     name: data['name'],
     price: data['price'].to_f * 100.to_i,
     description: data['description'],
     image: data['image'],
     qty: rand(40..60)
   )
+  download_image = open(URI.escape(data['image']))
+  created.imagesrc.attach(io: download_image, filename: "image-#{backpack.name}.jpg")
 end
 
 camera = Category.where(categoryDescription: 'camera').take
 camera_json.each do |data|
-  camera.products.create(
+  created = camera.products.create(
     name: data['product_name'],
     price: data['price'].to_f * 100.to_i,
     description: Faker::Quote.famous_last_words,
     image: data['image src'],
     qty: rand(20..50)
   )
+  download_image = open(URI.escape(data['image src']))
+  created.imagesrc.attach(io: download_image, filename: "image-#{camera.name}.jpg")
 end
 
 len = Category.where(categoryDescription: 'lens').take
 lens_json.each do |data|
-  len.products.create(
+  created = len.products.create(
     name: data['product_name'],
     price: data['price'].to_f * 100.to_i,
     description: Faker::Quote.matz,
     image: data['image src'],
     qty: rand(10..50)
   )
+  download_image = open(URI.escape(data['image src']))
+  created.imagesrc.attach(io: download_image, filename: "image-#{len.name}.jpg")
 end
 
 merch = Category.where(categoryDescription: 'merch').take
 merch_json.each do |data|
-  merch.products.create(
+  created = merch.products.create(
     name: data['p_name'],
     price: data['p_old_price'].to_f * 100.to_i,
     description: Faker::Quote.most_interesting_man_in_the_world,
     image: data['product_image src'],
     qty: rand(100..200)
   )
+  download_image = open(URI.escape(data['product_image src']))
+  created.imagesrc.attach(io: download_image, filename: "image-#{merch.name}.jpg")
 end
 
 provinces.each do |data|
