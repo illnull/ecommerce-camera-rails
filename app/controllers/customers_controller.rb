@@ -72,7 +72,8 @@ class CustomersController < ApplicationController
                              phoneNumber: params[:phoneNumber],
                              city: params[:city],
                              country: params[:country],
-                             province_id: params[:province_id])
+                             province_id: params[:province_id],
+                             address: params[:address])
     if @customer.save
       login!
       render json: {
