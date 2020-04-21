@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get '/products/all', to: 'products#all'
     get '/products/new', to: 'products#new'
     get '/products/:id', to: 'products#view'
+    get '/category/sale', to: 'products#sale'
     post '/customers/new', to: 'customers#create'
     get '/provinces/view', to: 'provinces#view'
     get '/contacts/view', to: 'contact#view'

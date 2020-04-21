@@ -8,6 +8,11 @@ class ProductsController < ApplicationController
     respond_with(@products)
   end
 
+  def sale
+    @products = Product.where(sale: 1)
+    respond_with(@products)
+  end
+
   def view
     @products = Product.where(id: params[:id])
     respond_with(@products)
