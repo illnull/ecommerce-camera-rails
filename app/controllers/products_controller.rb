@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    if params[:categoryId] == "null"
+    if params[:categoryId] == "0"
       @products = Product.where("name LIKE ?", "%#{params[:keyword]}")
     else
       @products = Product.where("category_id = ? AND name LIKE ?", params[:categoryId], "%#{params[:keyword]}%")
